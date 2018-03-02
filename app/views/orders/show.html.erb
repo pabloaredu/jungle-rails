@@ -1,11 +1,8 @@
 <section class="orders-show">
-
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
     <p><b>Email:</b> <%= @order.email %><p>
   </header>
-
-
   <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
@@ -19,11 +16,17 @@
       <tbody>
         <% @order.line_items.each do |item| %>
           <tr>
-            <td><%= item.product.name %></td>
-            <td><%= item.product.price %></td>
-            <td><%= item.quantity %></td>
-            <td><%= item.total_price %></td>
-          </tr>
+          <td>
+            <%= image_tag item.product.image.tiny %>
+          </td>
+          <td>
+            <h4><%= item.product.name %></h4>
+            <br>
+            <p><%= item.product.description %></p>
+          </td>
+          <td><%= item.quantity %></td>
+          <td><%= item.total_price %></td>
+        </tr>
         <% end %>
       </tbody>
       <tfoot>
@@ -38,9 +41,6 @@
       </tfoot>
     </table>
   </div>
-
-
-
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
