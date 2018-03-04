@@ -26,6 +26,30 @@
       </div>
     </div>
 
+
+    <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_for :reviews, url: "#{@product.id}/reviews" do |f| %>
+
+        <div class="form-group">
+          <%= f.label "Rating" %>
+          <%= f.select(:rating, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]])) %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "Description" %>
+          <%= f.text_field :description, class: 'form-control' %>
+        </div>
+
+
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
     <div class="row">
       <div class="col-sm-4">
       <dl class="dl-horizontal">
