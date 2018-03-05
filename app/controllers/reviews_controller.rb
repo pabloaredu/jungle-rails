@@ -10,8 +10,6 @@ class ReviewsController < ApplicationController
       else
         redirect_to "/"
       end
-    else
-      redirect_to :back
     end
   end
 
