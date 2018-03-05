@@ -41,14 +41,21 @@
       </div>
     <% end %>
 
+
+
+
+
     <div class="row">
       <div class="col-sm-4">
       <dl class="dl-horizontal">
       <dt>Reviews</dt>
       <% @product.reviews.sort {|a,b| b.created_at <=> a.created_at }.each.each do |review|%>
-      <dd><u>Rate: <%= review.rating %> </u> </dd>
-      <dd><%= review.description %></dd>
-      <dd></dd>
+      <dd><u>Rating:</u> <%= review.rating %>  </dd>
+      <dd><%= review.description %>
+      <% if current_user && review.user_id == current_user.id %>
+        <p><%= link_to "Delete", root_path %>  </p>
+        <%end %>
+        </dd>
       <% end %>
     </div>
   </article>
