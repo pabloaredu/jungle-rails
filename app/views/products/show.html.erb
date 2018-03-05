@@ -41,10 +41,6 @@
       </div>
     <% end %>
 
-
-
-
-
     <div class="row">
       <div class="col-sm-4">
       <dl class="dl-horizontal">
@@ -53,7 +49,9 @@
       <dd><u>Rating:</u> <%= review.rating %>  </dd>
       <dd><%= review.description %>
       <% if current_user && review.user_id == current_user.id %>
-        <p><%= link_to "Delete", root_path %>  </p>
+        <%= form_for :reviews, url: "#{@product.id}/reviews/#{review.id}", :method => :delete do |f| %>
+         <%= f.submit ("Delete") %>
+        <% end %>
         <%end %>
         </dd>
       <% end %>
