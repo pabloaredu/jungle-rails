@@ -1,13 +1,17 @@
 class ReviewsController < ApplicationController
-
+  before_filter :authorize
 	def create
-    @review = Review.create(review_params)
-    @review.user_id = current_user.id
-    @review.product_id = params[:product_id]
-    if @review.save
-      redirect_to :back
+    if current_user
+      @review = Review.create(review_params)
+      @review.user_id = current_user.id
+      @review.product_id = params[:product_id]
+      if @review.save
+        redirect_to :back
+      else
+        redirect_to "/"
+      end
     else
-      redirect_to "/"
+      redirect_to :back
     end
   end
 
